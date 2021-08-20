@@ -34,7 +34,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
         alignment: Alignment.centerLeft,
         child: Text(
           'Smart Plantation',
-          style: AppTextStyles.heading15,
+          style: AppTextStyles.heading10,
         ),
       ),
     );
