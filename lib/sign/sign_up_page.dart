@@ -9,20 +9,24 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: Column(
-            children: [
-              const SpanLandscape(),
-              Text(
-                "Sign Up",
-                style: AppTextStyles.heading60,
-              ),
-              const SignUpFormWidget(),
-            ],
-          ),
+      body: buildBody(context),
+    );
+  }
+
+  SingleChildScrollView buildBody(BuildContext context) {
+    return SingleChildScrollView(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Column(
+          children: [
+            const SpanLandscape(),
+            Text(
+              "Sign Up",
+              style: AppTextStyles.heading60,
+            ),
+            const SignUpFormWidget(),
+          ],
         ),
       ),
     );

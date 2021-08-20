@@ -18,65 +18,69 @@ class LoginFormWidgetState extends State<LoginFormWidget> {
       child: Expanded(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              TextFormField(
-                decoration: InputDecoration(
-                  fillColor: Colors.green[400],
-                  labelText: 'Email *',
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter some text';
-                  }
-                  return null;
-                },
-                textInputAction: TextInputAction.next, // Moves focus to next.
-              ),
-              TextFormField(
-                decoration: InputDecoration(
-                  fillColor: Colors.green[400],
-                  labelText: 'Password *',
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter some text';
-                  }
-                  return null;
-                },
-                obscureText: true,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0, bottom: 10),
-                child: RichText(
-                    text: TextSpan(
-                  text: "Don't have an account yet? ",
-                  style: TextStyle(fontSize: 15, color: Colors.black),
-                  children: <TextSpan>[
-                    TextSpan(
-                        text: 'click here ',
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            print('The button is clicked!');
-                          },
-                        style: const TextStyle(
-                          color: Colors.blue,
-                        )),
-                    const TextSpan(text: 'and sign up!'),
-                  ],
-                )),
-              ),
-              generateFormButton("Login", Icons.login, () {
-                print("logged");
-              }),
-              generateFormButton("About", Icons.info, () {
-                print("aboutting");
-              }),
-            ],
-          ),
+          child: buildFormControllers(),
         ),
       ),
+    );
+  }
+
+  Column buildFormControllers() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        TextFormField(
+          decoration: InputDecoration(
+            fillColor: Colors.green[400],
+            labelText: 'Email *',
+          ),
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter some text';
+            }
+            return null;
+          },
+          textInputAction: TextInputAction.next, // Moves focus to next.
+        ),
+        TextFormField(
+          decoration: InputDecoration(
+            fillColor: Colors.green[400],
+            labelText: 'Password *',
+          ),
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter some text';
+            }
+            return null;
+          },
+          obscureText: true,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 16.0, bottom: 10),
+          child: RichText(
+              text: TextSpan(
+            text: "Don't have an account yet? ",
+            style: TextStyle(fontSize: 15, color: Colors.black),
+            children: <TextSpan>[
+              TextSpan(
+                  text: 'click here ',
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      print('The button is clicked!');
+                    },
+                  style: const TextStyle(
+                    color: Colors.blue,
+                  )),
+              const TextSpan(text: 'and sign up!'),
+            ],
+          )),
+        ),
+        generateFormButton("Login", Icons.login, () {
+          print("logged");
+        }),
+        generateFormButton("About", Icons.info, () {
+          print("aboutting");
+        }),
+      ],
     );
   }
 

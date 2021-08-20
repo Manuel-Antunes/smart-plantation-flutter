@@ -9,20 +9,24 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: Column(
-            children: [
-              const SpanLandscape(),
-              Text(
-                "Login",
-                style: AppTextStyles.heading60,
-              ),
-              const LoginFormWidget(),
-            ],
-          ),
+      body: buildBody(context),
+    );
+  }
+
+  SingleChildScrollView buildBody(BuildContext context) {
+    return SingleChildScrollView(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Column(
+          children: [
+            const SpanLandscape(),
+            Text(
+              "Login",
+              style: AppTextStyles.heading60,
+            ),
+            const LoginFormWidget(),
+          ],
         ),
       ),
     );
