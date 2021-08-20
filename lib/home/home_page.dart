@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smart_plantation/common/plantation/PLANTATION_STATUSES.dart';
+import 'package:smart_plantation/common/plantation/plantation_statuses.dart';
+import 'package:smart_plantation/components/header_widget.dart';
 import 'package:smart_plantation/core/core.dart';
 
 class HomePage extends StatelessWidget {
@@ -9,38 +10,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: buildBody(),
-      appBar: buildAppBar(),
+      appBar: HeaderWidget(),
       backgroundColor:
           Color(int.parse("#191920".substring(1, 7), radix: 16) + 0xFF000000),
       floatingActionButton: buildFloattingActionButton(),
-    );
-  }
-
-  AppBar buildAppBar() {
-    return AppBar(
-      backgroundColor:
-          Color(int.parse("#141419".substring(1, 7), radix: 16) + 0xFF000000),
-      actions: [
-        const Center(child: Text("Manuel Antunes")),
-        buildAvatar("https://avatars.githubusercontent.com/u/57446204?v=4")
-      ],
-      title: Align(
-        alignment: Alignment.centerLeft,
-        child: Text(
-          'Smart Plantation',
-          style: AppTextStyles.heading15,
-        ),
-      ),
-    );
-  }
-
-  IconButton buildAvatar(String avatarUrl) {
-    return IconButton(
-      onPressed: () {},
-      icon: CircleAvatar(
-        backgroundImage: NetworkImage(avatarUrl),
-        radius: 20,
-      ),
     );
   }
 
