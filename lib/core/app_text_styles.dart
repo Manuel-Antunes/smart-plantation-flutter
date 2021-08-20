@@ -30,6 +30,7 @@ class AppTextStyles {
 
   static final TextStyle heading60 = GoogleFonts.notoSans(
     fontSize: 60,
+    color: Colors.white,
     fontWeight: FontWeight.w300,
   );
 

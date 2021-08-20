@@ -29,10 +29,7 @@ class LoginFormWidgetState extends State<LoginFormWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TextFormField(
-          decoration: InputDecoration(
-            fillColor: Colors.green[400],
-            labelText: 'Email *',
-          ),
+          decoration: buildInputDecoration('Email *'),
           validator: (value) {
             if (value == null || value.isEmpty) {
               return 'Please enter some text';
@@ -41,11 +38,12 @@ class LoginFormWidgetState extends State<LoginFormWidget> {
           },
           textInputAction: TextInputAction.next, // Moves focus to next.
         ),
+        Padding(
+          padding: EdgeInsets.only(top: 20),
+        ),
         TextFormField(
-          decoration: InputDecoration(
-            fillColor: Colors.green[400],
-            labelText: 'Password *',
-          ),
+          decoration: buildInputDecoration('Password *'),
+          style: TextStyle(fontSize: 20.0),
           validator: (value) {
             if (value == null || value.isEmpty) {
               return 'Please enter some text';
@@ -59,7 +57,6 @@ class LoginFormWidgetState extends State<LoginFormWidget> {
           child: RichText(
               text: TextSpan(
             text: "Don't have an account yet? ",
-            style: TextStyle(fontSize: 15, color: Colors.black),
             children: <TextSpan>[
               TextSpan(
                   text: 'click here ',
@@ -81,6 +78,14 @@ class LoginFormWidgetState extends State<LoginFormWidget> {
           print("aboutting");
         }),
       ],
+    );
+  }
+
+  InputDecoration buildInputDecoration(String labelText) {
+    return InputDecoration(
+      fillColor: Colors.white,
+      labelText: labelText,
+      filled: true,
     );
   }
 

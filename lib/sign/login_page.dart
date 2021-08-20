@@ -9,6 +9,8 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:
+          Color(int.parse("#191920".substring(1, 7), radix: 16) + 0xFF000000),
       body: buildBody(context),
     );
   }

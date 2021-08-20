@@ -29,10 +29,7 @@ class SignUpFormWidgetState extends State<SignUpFormWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TextFormField(
-          decoration: InputDecoration(
-            fillColor: Colors.green[400],
-            labelText: 'Name *',
-          ),
+          decoration: buildInputDecoration('Name *'),
           validator: (value) {
             if (value == null || value.isEmpty) {
               return 'Please enter some text';
@@ -41,11 +38,11 @@ class SignUpFormWidgetState extends State<SignUpFormWidget> {
           },
           textInputAction: TextInputAction.next,
         ),
+        Padding(
+          padding: EdgeInsets.only(top: 20),
+        ),
         TextFormField(
-          decoration: InputDecoration(
-            fillColor: Colors.green[400],
-            labelText: 'Email *',
-          ),
+          decoration: buildInputDecoration('Email *'),
           validator: (value) {
             if (value == null || value.isEmpty) {
               return 'Please enter some text';
@@ -54,11 +51,11 @@ class SignUpFormWidgetState extends State<SignUpFormWidget> {
           },
           textInputAction: TextInputAction.next,
         ),
+        Padding(
+          padding: EdgeInsets.only(top: 20),
+        ),
         TextFormField(
-          decoration: InputDecoration(
-            fillColor: Colors.green[400],
-            labelText: 'Password *',
-          ),
+          decoration: buildInputDecoration('Password *'),
           validator: (value) {
             if (value == null || value.isEmpty) {
               return 'Please enter some text';
@@ -68,11 +65,11 @@ class SignUpFormWidgetState extends State<SignUpFormWidget> {
           textInputAction: TextInputAction.next,
           obscureText: true,
         ),
+        Padding(
+          padding: EdgeInsets.only(top: 20),
+        ),
         TextFormField(
-          decoration: InputDecoration(
-            fillColor: Colors.green[400],
-            labelText: 'Password Confirmation*',
-          ),
+          decoration: buildInputDecoration('Password Confirmation *'),
           validator: (value) {
             if (value == null || value.isEmpty) {
               return 'Please enter some text';
@@ -86,7 +83,6 @@ class SignUpFormWidgetState extends State<SignUpFormWidget> {
           child: RichText(
               text: TextSpan(
             text: "Aready have an account? ",
-            style: TextStyle(fontSize: 15, color: Colors.black),
             children: <TextSpan>[
               TextSpan(
                   text: 'click here ',
@@ -113,6 +109,14 @@ class SignUpFormWidgetState extends State<SignUpFormWidget> {
               print("aboutting");
             }),
       ],
+    );
+  }
+
+  InputDecoration buildInputDecoration(String labelText) {
+    return InputDecoration(
+      fillColor: Colors.white,
+      labelText: labelText,
+      filled: true,
     );
   }
 

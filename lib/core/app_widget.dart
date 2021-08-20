@@ -19,7 +19,7 @@ class AppWidget extends StatelessWidget {
         ),
       ),
       title: "Smart Plantation",
-      home: HomePage(),
+      home: SignUpPage(),
     );
   }
 }
