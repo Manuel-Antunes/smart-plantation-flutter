@@ -1,5 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_plantation/home/home_page.dart';
+import 'package:smart_plantation/sign/login_page.dart';
 
 class SignUpFormWidget extends StatefulWidget {
   const SignUpFormWidget({Key? key}) : super(key: key);
@@ -88,7 +90,12 @@ class SignUpFormWidgetState extends State<SignUpFormWidget> {
                   text: 'click here ',
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
-                      print('The button is clicked!');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LoginPage(),
+                        ),
+                      );
                     },
                   style: TextStyle(
                     color: Colors.blue,
@@ -100,7 +107,12 @@ class SignUpFormWidgetState extends State<SignUpFormWidget> {
         generateFormButton(
             content: "Sign Up",
             onPressed: () {
-              print("logged");
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HomePage(),
+                ),
+              );
             }),
         generateFormButton(
             content: "About",
