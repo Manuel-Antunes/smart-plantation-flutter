@@ -1,5 +1,6 @@
-import 'package:smart_plantation/login/login_page.dart';
+import 'package:smart_plantation/sign/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_plantation/sign/sign_up_page.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class AppWidget extends StatelessWidget {
         ),
       ),
       title: "Smart Plantation",
-      home: LoginPage(),
+      home: SignUpPage(),
     );
   }
 }
