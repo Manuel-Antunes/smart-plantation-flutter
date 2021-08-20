@@ -1,15 +1,15 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class FormWidget extends StatefulWidget {
-  const FormWidget({Key? key}) : super(key: key);
+class LoginFormWidget extends StatefulWidget {
+  const LoginFormWidget({Key? key}) : super(key: key);
   @override
-  FormWidgetState createState() {
-    return FormWidgetState();
+  LoginFormWidgetState createState() {
+    return LoginFormWidgetState();
   }
 }
 
-class FormWidgetState extends State<FormWidget> {
+class LoginFormWidgetState extends State<LoginFormWidget> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -60,10 +60,10 @@ class FormWidgetState extends State<FormWidget> {
                           ..onTap = () {
                             print('The button is clicked!');
                           },
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.blue,
                         )),
-                    TextSpan(text: 'and sign up!'),
+                    const TextSpan(text: 'and sign up!'),
                   ],
                 )),
               ),
