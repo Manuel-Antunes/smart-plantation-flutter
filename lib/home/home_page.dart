@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_plantation/common/plantation/plantation_statuses.dart';
 import 'package:smart_plantation/components/header_widget.dart';
 import 'package:smart_plantation/core/core.dart';
+import 'package:smart_plantation/create_plantation/create_plantation.dart';
 import 'package:smart_plantation/home/widgets/plantation_list_widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -14,7 +15,7 @@ class HomePage extends StatelessWidget {
       appBar: HeaderWidget(),
       backgroundColor:
           Color(int.parse("#191920".substring(1, 7), radix: 16) + 0xFF000000),
-      floatingActionButton: buildFloattingActionButton(),
+      floatingActionButton: buildFloattingActionButton(context),
     );
   }
 
@@ -23,14 +24,21 @@ class HomePage extends StatelessWidget {
         padding: EdgeInsets.only(top: 10), child: PlantationListWidget());
   }
 
-  Padding buildFloattingActionButton() {
+  Padding buildFloattingActionButton(context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16, right: 8),
       child: FloatingActionButton.large(
         child: const Icon(Icons.add),
         backgroundColor:
             Color(int.parse("#141419".substring(1, 7), radix: 16) + 0xFF000000),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CreatePlantationPage(),
+            ),
+          );
+        },
       ),
     );
   }
