@@ -18,6 +18,7 @@ dependencies:
   provider: ^5.0.0
   shared_preferences: ^2.0.5
   firebase_database: ^6.1.2
+  sqflite:
 
 dev_dependencies:
   flutter_test:
