@@ -2,6 +2,7 @@ import 'package:smart_plantation/home/home_page.dart';
 import 'package:smart_plantation/sign/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_plantation/sign/sign_up_page.dart';
+import 'package:smart_plantation/splash/splash_screen.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
@@ -19,7 +20,13 @@ class AppWidget extends StatelessWidget {
         ),
       ),
       title: "Smart Plantation",
-      home: SignUpPage(),
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/splash',
+      routes: {
+        '/splash': (context) => SplashScreen(),
+        '/home': (context) => HomePage(),
+        '/login': (context) => LoginPage(),
+      },
     );
   }
 }
