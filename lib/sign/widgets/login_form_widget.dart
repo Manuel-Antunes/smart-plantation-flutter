@@ -13,6 +13,9 @@ class LoginFormWidget extends StatefulWidget {
 
 class LoginFormWidgetState extends State<LoginFormWidget> {
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController _controllerEmail = TextEditingController();
+  final TextEditingController _controllerPass = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -32,26 +35,18 @@ class LoginFormWidgetState extends State<LoginFormWidget> {
       children: [
         TextFormField(
           decoration: buildInputDecoration('Email *'),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Please enter some text';
-            }
-            return null;
-          },
+          controller: _controllerEmail,
+          validator: _validateEmail,
           textInputAction: TextInputAction.next, // Moves focus to next.
         ),
-        Padding(
+        const Padding(
           padding: EdgeInsets.only(top: 20),
         ),
         TextFormField(
           decoration: buildInputDecoration('Password *'),
-          style: TextStyle(fontSize: 20.0),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Please enter some text';
-            }
-            return null;
-          },
+          style: const TextStyle(fontSize: 20.0),
+          controller: _controllerPass,
+          validator: _validatePassword,
           obscureText: true,
         ),
         Padding(
@@ -78,19 +73,35 @@ class LoginFormWidgetState extends State<LoginFormWidget> {
             ],
           )),
         ),
-        generateFormButton("Login", Icons.login, () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => HomePage(),
-            ),
-          );
-        }),
+        generateFormButton("Login", Icons.login, onSubmit),
         generateFormButton("About", Icons.info, () {
           print("aboutting");
         }),
       ],
     );
+  }
+
+  String? _validatePassword(value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter some text';
+    }
+    return null;
+  }
+
+  String? _validateEmail(value) {
+    if (value.isEmpty) {
+      return 'Please enter some text';
+    }
+    if (!RegExp(
+            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+        .hasMatch(value)) {
+      return 'Invalid Email';
+    }
+    return null;
+  }
+
+  void onSubmit() {
+    _formKey.currentState!.validate();
   }
 
   InputDecoration buildInputDecoration(String labelText) {

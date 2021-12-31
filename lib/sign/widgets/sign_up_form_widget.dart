@@ -13,6 +13,11 @@ class SignUpFormWidget extends StatefulWidget {
 
 class SignUpFormWidgetState extends State<SignUpFormWidget> {
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController _controllerName = TextEditingController();
+  final TextEditingController _controllerEmail = TextEditingController();
+  final TextEditingController _controllerPass = TextEditingController();
+  final TextEditingController _controllerConfirmPass = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -31,13 +36,9 @@ class SignUpFormWidgetState extends State<SignUpFormWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TextFormField(
+          controller: _controllerName,
           decoration: buildInputDecoration('Name *'),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Please enter some text';
-            }
-            return null;
-          },
+          validator: _validateName,
           textInputAction: TextInputAction.next,
         ),
         Padding(
@@ -45,12 +46,8 @@ class SignUpFormWidgetState extends State<SignUpFormWidget> {
         ),
         TextFormField(
           decoration: buildInputDecoration('Email *'),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Please enter some text';
-            }
-            return null;
-          },
+          controller: _controllerEmail,
+          validator: _validateEmail,
           textInputAction: TextInputAction.next,
         ),
         Padding(
@@ -58,12 +55,8 @@ class SignUpFormWidgetState extends State<SignUpFormWidget> {
         ),
         TextFormField(
           decoration: buildInputDecoration('Password *'),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Please enter some text';
-            }
-            return null;
-          },
+          controller: _controllerPass,
+          validator: _validatePass,
           textInputAction: TextInputAction.next,
           obscureText: true,
         ),
@@ -71,13 +64,9 @@ class SignUpFormWidgetState extends State<SignUpFormWidget> {
           padding: EdgeInsets.only(top: 20),
         ),
         TextFormField(
+          controller: _controllerConfirmPass,
           decoration: buildInputDecoration('Password Confirmation *'),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Please enter some text';
-            }
-            return null;
-          },
+          validator: _validateConfirmPass,
           obscureText: true,
         ),
         Padding(
@@ -104,16 +93,7 @@ class SignUpFormWidgetState extends State<SignUpFormWidget> {
             ],
           )),
         ),
-        generateFormButton(
-            content: "Sign Up",
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => HomePage(),
-                ),
-              );
-            }),
+        generateFormButton(content: "Sign Up", onPressed: onSubmit),
         generateFormButton(
             content: "About",
             icon: Icons.info,
@@ -122,6 +102,51 @@ class SignUpFormWidgetState extends State<SignUpFormWidget> {
             }),
       ],
     );
+  }
+
+  void onSubmit() {
+    bool valid = _formKey.currentState!.validate();
+    if (valid) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomePage(),
+        ),
+      );
+    }
+  }
+
+  String? _validateName(value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter some text';
+    }
+    return null;
+  }
+
+  String? _validateEmail(value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter some text';
+    }
+    if (!RegExp(
+            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+        .hasMatch(value)) {
+      return 'Invalid Email';
+    }
+    return null;
+  }
+
+  String? _validatePass(value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter some text';
+    }
+    return null;
+  }
+
+  String? _validateConfirmPass(value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter some text';
+    }
+    return null;
   }
 
   InputDecoration buildInputDecoration(String labelText) {
