@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_plantation/about/about_page.dart';
 import 'package:smart_plantation/home/home_page.dart';
 import 'package:smart_plantation/sign/sign_up_page.dart';
 
@@ -75,7 +76,10 @@ class LoginFormWidgetState extends State<LoginFormWidget> {
         ),
         generateFormButton("Login", Icons.login, onSubmit),
         generateFormButton("About", Icons.info, () {
-          print("aboutting");
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AboutPage()),
+          );
         }),
       ],
     );
