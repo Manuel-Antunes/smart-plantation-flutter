@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:smart_plantation/core/core.dart';
 import 'package:smart_plantation/home/home_page.dart';
+import 'package:http/http.dart' as http;
 
 class GoogleButtonWidget extends StatelessWidget {
   const GoogleButtonWidget({Key? key}) : super(key: key);
@@ -33,6 +37,7 @@ class GoogleButtonWidget extends StatelessWidget {
 
   Future<void> _onPressed(BuildContext context) async {
     try {
+      // await FirebaseAuth.instance.signOut();
       final GoogleSignInAccount? googleSignInAccount =
           await GoogleSignIn().signIn();
       final GoogleSignInAuthentication googleSignInAuthentication =
@@ -44,10 +49,13 @@ class GoogleButtonWidget extends StatelessWidget {
       UserCredential crd =
           await FirebaseAuth.instance.signInWithCredential(credential);
       String idToken = await crd.user!.getIdToken();
+      var url = Uri.parse(AppConfig.apiUrl + "/api/auth");
+      var response = await http.post(url, body: {'idToken': idToken});
+      Map parsed = json.decode(response.body);
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => HomePage(),
+          builder: (context) => const HomePage(),
         ),
       );
     } on FirebaseAuthException catch (e) {

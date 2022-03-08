@@ -1,12 +1,15 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_plantation/about/about_page.dart';
+import 'package:smart_plantation/core/core.dart';
 import 'package:smart_plantation/home/home_page.dart';
 import 'package:smart_plantation/sign/sign_up_page.dart';
 import 'package:smart_plantation/sign/widgets/google_button_widget.dart';
+import 'package:http/http.dart' as http;
 
 class LoginFormWidget extends StatefulWidget {
   const LoginFormWidget({Key? key}) : super(key: key);
@@ -120,6 +123,9 @@ class LoginFormWidgetState extends State<LoginFormWidget> {
               email: _controllerEmail.value.text,
               password: _controllerPass.value.text);
       String idToken = await credential.user!.getIdToken();
+      var url = Uri.parse(AppConfig.apiUrl + "/api/auth");
+      var response = await http.post(url, body: {'idToken': idToken});
+      Map parsed = json.decode(response.body);
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Authentication Error"),
