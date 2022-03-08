@@ -9,17 +9,24 @@ class GoogleButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 5),
-        child: SignInButton(
-          Buttons.Google,
-          text: "Sign up with Google",
-          onPressed: () {
-            _onPressed(context);
-          },
-          padding: EdgeInsets.symmetric(vertical: 15),
-          // minimumSize: const Size(double.infinity, 30),]
-        ));
+    return Row(
+      children: [
+        Expanded(
+          flex: 1,
+          child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 5),
+              child: SignInButton(
+                Buttons.Google,
+                text: "Sign up with Google",
+                onPressed: () {
+                  _onPressed(context);
+                },
+                padding: EdgeInsets.symmetric(vertical: 10),
+                // minimumSize: const Size(double.infinity, 30),]
+              )),
+        ),
+      ],
+    );
   }
 
   Future<String?> signInwithGoogle() async {}

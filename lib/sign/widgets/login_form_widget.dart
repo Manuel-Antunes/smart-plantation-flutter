@@ -27,7 +27,7 @@ class LoginFormWidgetState extends State<LoginFormWidget> {
       key: _formKey,
       child: Expanded(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(5.0),
           child: buildFormControllers(),
         ),
       ),
@@ -85,7 +85,7 @@ class LoginFormWidgetState extends State<LoginFormWidget> {
             MaterialPageRoute(builder: (context) => AboutPage()),
           );
         }),
-        GoogleButtonWidget()
+        const GoogleButtonWidget()
       ],
     );
   }

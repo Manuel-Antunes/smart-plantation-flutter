@@ -26,7 +26,7 @@ class SignUpFormWidgetState extends State<SignUpFormWidget> {
       key: _formKey,
       child: Expanded(
         child: Padding(
-          padding: const EdgeInsets.only(top: 20.0, left: 20, right: 20),
+          padding: const EdgeInsets.only(top: 20.0, left: 5, right: 5),
           child: buildFormControllers(),
         ),
       ),

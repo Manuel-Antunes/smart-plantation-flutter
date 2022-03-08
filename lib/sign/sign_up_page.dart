@@ -20,7 +20,7 @@ class SignUpPage extends StatelessWidget {
     return SingleChildScrollView(
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
+        height: MediaQuery.of(context).size.height + 300,
         child: Column(
           children: [
             const SpanLandscape(),
