@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_plantation/home/home_page.dart';
@@ -86,10 +87,10 @@ class SignUpFormWidgetState extends State<SignUpFormWidget> {
                         ),
                       );
                     },
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.blue,
                   )),
-              TextSpan(text: 'and sign in!'),
+              const TextSpan(text: 'and sign in!'),
             ],
           )),
         ),
@@ -104,15 +105,25 @@ class SignUpFormWidgetState extends State<SignUpFormWidget> {
     );
   }
 
-  void onSubmit() {
+  Future<void> onSubmit() async {
     bool valid = _formKey.currentState!.validate();
-    if (valid) {
+    if (!valid) {
+      return;
+    }
+    try {
+      UserCredential credential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+              email: _controllerEmail.value.text,
+              password: _controllerPass.value.text);
+      await credential.user!.updateDisplayName(_controllerName.value.text);
       Navigator.push(
         context,
-        MaterialPageRoute(
-          builder: (context) => HomePage(),
-        ),
+        MaterialPageRoute(builder: (context) => LoginPage()),
       );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Error While creating user"),
+      ));
     }
   }
 

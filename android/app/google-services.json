@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "626386175662",
+    "project_id": "smart-plantation-af873",
+    "storage_bucket": "smart-plantation-af873.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:626386175662:android:f9889d2a72c890b2b70f3f",
+        "android_client_info": {
+          "package_name": "com.example.smart_plantation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "626386175662-6a5vsa9omugv42g1hd85hmmp7ud79cd4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkAul2kTWkcJWS4mO15Uo-nFoqpSgQpU8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "626386175662-6a5vsa9omugv42g1hd85hmmp7ud79cd4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

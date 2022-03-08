@@ -4,7 +4,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:smart_plantation/core/app_text_styles.dart';
 
 class AboutPage extends StatelessWidget {
-  const AboutPage({ Key? key }) : super(key: key);
+  const AboutPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +42,12 @@ class AboutPage extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               height: 200,
               child: FlutterMap(
-                options: MapOptions(center: LatLng(-9.745473, -36.631517), zoom: 15),
+                options:
+                    MapOptions(center: LatLng(-9.745473, -36.631517), zoom: 15),
                 layers: [
                   TileLayerOptions(
-                    urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                    urlTemplate:
+                        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
                     subdomains: ['a', 'b', 'c'],
                     attributionBuilder: (_) => Text('IFAL - Arapiraca'),
                   ),
@@ -55,7 +57,8 @@ class AboutPage extends StatelessWidget {
                         width: 60,
                         height: 60,
                         point: LatLng(-9.745473, -36.631517),
-                        builder: (ctx) => Icon(Icons.place, size: 48, color: Color(0xff0077B6)),
+                        builder: (ctx) => Icon(Icons.place,
+                            size: 48, color: Color(0xff0077B6)),
                       ),
                     ],
                   ),

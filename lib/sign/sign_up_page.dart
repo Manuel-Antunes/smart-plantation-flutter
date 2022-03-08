@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_plantation/core/app_text_styles.dart';
+import 'package:smart_plantation/sign/widgets/footer_widget.dart';
 import 'package:smart_plantation/sign/widgets/sign_up_form_widget.dart';
 import 'package:smart_plantation/sign/widgets/span_landscape_widget.dart';
 
@@ -28,6 +29,7 @@ class SignUpPage extends StatelessWidget {
               style: AppTextStyles.heading60,
             ),
             const SignUpFormWidget(),
+            const FooterWidget(),
           ],
         ),
       ),

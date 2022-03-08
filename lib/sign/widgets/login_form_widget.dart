@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_plantation/about/about_page.dart';
@@ -104,8 +107,22 @@ class LoginFormWidgetState extends State<LoginFormWidget> {
     return null;
   }
 
-  void onSubmit() {
-    _formKey.currentState!.validate();
+  Future<void> onSubmit() async {
+    try {
+      bool valid = _formKey.currentState!.validate();
+      if (!valid) {
+        return;
+      }
+      UserCredential credential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+              email: _controllerEmail.value.text,
+              password: _controllerPass.value.text);
+      String idToken = await credential.user!.getIdToken();
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Authentication Error"),
+      ));
+    }
   }
 
   InputDecoration buildInputDecoration(String labelText) {
