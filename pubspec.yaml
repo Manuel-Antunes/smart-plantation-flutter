@@ -21,6 +21,7 @@ dependencies:
   sqflite: any
   latlong2: any
   flutter_map: any
+  flutter_signin_button: ^2.0.0
 
 dev_dependencies:
   flutter_test:

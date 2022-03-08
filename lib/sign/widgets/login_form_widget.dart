@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_plantation/about/about_page.dart';
 import 'package:smart_plantation/home/home_page.dart';
 import 'package:smart_plantation/sign/sign_up_page.dart';
+import 'package:smart_plantation/sign/widgets/google_button_widget.dart';
 
 class LoginFormWidget extends StatefulWidget {
   const LoginFormWidget({Key? key}) : super(key: key);
@@ -84,6 +85,7 @@ class LoginFormWidgetState extends State<LoginFormWidget> {
             MaterialPageRoute(builder: (context) => AboutPage()),
           );
         }),
+        GoogleButtonWidget()
       ],
     );
   }

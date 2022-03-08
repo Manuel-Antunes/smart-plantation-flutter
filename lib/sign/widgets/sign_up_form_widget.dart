@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_plantation/home/home_page.dart';
 import 'package:smart_plantation/sign/login_page.dart';
+import 'package:smart_plantation/sign/widgets/google_button_widget.dart';
 
 class SignUpFormWidget extends StatefulWidget {
   const SignUpFormWidget({Key? key}) : super(key: key);
@@ -101,6 +102,7 @@ class SignUpFormWidgetState extends State<SignUpFormWidget> {
             onPressed: () {
               print("aboutting");
             }),
+        GoogleButtonWidget()
       ],
     );
   }
