@@ -24,6 +24,7 @@ dependencies:
   flutter_signin_button: ^2.0.0
   flutter_bloc: ^7.1.0
   http: ^0.13.3
+  equatable: ^2.0.3
 
 dev_dependencies:
   flutter_test:
